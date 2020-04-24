@@ -8,11 +8,10 @@ const initialColor = {
 };
 
 
-
-
-const ColorList = ({ colors, updateColors }) => {
+const ColorList = ({ colors, updateColors, isFetching }) => {
  
   const [editing, setEditing] = useState(false);
+  const [adding, setAdding] = useState(false)
   const [colorToEdit, setColorToEdit] = useState(initialColor);
   const [newColor, setNewColor] = useState({
     color: '',
@@ -33,7 +32,7 @@ const ColorList = ({ colors, updateColors }) => {
     axiosWithAuth()
       .get('/api/colors')
       .then(res => {
-        updateColors(res.data)
+        updateColors(res.data);
       })
       .catch(err => console.log(err));
   }
@@ -93,7 +92,9 @@ const ColorList = ({ colors, updateColors }) => {
   };
 
   return (
-    <div className="colors-wrap">
+    <>
+    {!isFetching && (
+    <div className="colors-wrap box">
       <p className='title is-5'>colors</p>
       <ul>
         {colors.map(color => (
@@ -173,6 +174,8 @@ const ColorList = ({ colors, updateColors }) => {
       )}
       
     </div>
+    )}
+    </>
   );
 };
 

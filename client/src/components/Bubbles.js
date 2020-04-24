@@ -3,7 +3,7 @@ import { Pack } from "@potion/layout";
 import { Svg, Circle } from "@potion/element";
 import { Route } from 'react-router-dom';
 
-const Bubbles = ({ colors }) => {
+const Bubbles = ({ colors, isFetching }) => {
   const [bubbleData, setBubbleData] = useState([]);
   useEffect(() => {
     const generateBubbleData = colors.map((_, i) => ({
@@ -15,7 +15,7 @@ const Bubbles = ({ colors }) => {
 
   return (
     <div className="bubble-wrap">
-      <p className='title is-5'>bubbles</p>
+      {!isFetching && (<p className='title is-5'>bubbles</p>)}
       <Svg width={400} height={400}>
         <Pack
           data={{

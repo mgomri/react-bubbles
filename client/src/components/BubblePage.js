@@ -26,15 +26,15 @@ const BubblePage = () => {
   
 
   return (
-    <div className='bubble-pg'>
+    <div className='bubble-pg box'>
       <div id='loader'>
         {isFetching && (
           <Loader type="Puff" color="#00BFFF" height={80} width={80} />
         )}
       </div>
       <div className='bubble-view'>
-      <ColorList colors={colorList} updateColors={setColorList} />
-      <Bubbles colors={colorList} />
+      <ColorList colors={colorList} updateColors={setColorList} isFetching={isFetching}/>
+      <Bubbles colors={colorList} isFetching={isFetching}/>
       </div>
     </div>
   );
