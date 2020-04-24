@@ -34,8 +34,9 @@ const Login = () => {
   }
   return (
     <div className='login-form'>
-      <h1>Welcome to the Bubble App!</h1>
-      <h3>Login to see our bubbles</h3>
+      <h1 className='title is-3'>Welcome to the Bubble App!</h1>
+      <h3 className='title is-3'>Login to see our bubbles</h3>
+      <div className='spacer' />
       <form className='form' onSubmit={login}>
         <label htmlFor='username'>Username</label>
         <input
@@ -43,6 +44,7 @@ const Login = () => {
           name='username'
           value={credentials.username}
           onChange={onChangeHandler}
+          className='input'
         />
          <label htmlFor='password'>Password</label>
         <input
@@ -50,8 +52,9 @@ const Login = () => {
           name='password'
           value={credentials.password}
           onChange={onChangeHandler}
+          className='input'
         />
-        <button type='submit' className='button'>Login</button>
+        <button type='submit' className='button is-dark is-outlined is-medium'>Login</button>
       </form>
     </div>
   );

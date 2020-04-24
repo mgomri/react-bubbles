@@ -32,9 +32,10 @@ const BubblePage = () => {
           <Loader type="Puff" color="#00BFFF" height={80} width={80} />
         )}
       </div>
-      
+      <div className='bubble-view'>
       <ColorList colors={colorList} updateColors={setColorList} />
       <Bubbles colors={colorList} />
+      </div>
     </div>
   );
 };

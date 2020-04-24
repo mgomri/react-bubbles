@@ -94,12 +94,12 @@ const ColorList = ({ colors, updateColors }) => {
 
   return (
     <div className="colors-wrap">
-      <p>colors</p>
+      <p className='title is-5'>colors</p>
       <ul>
         {colors.map(color => (
           <li key={color.color} onClick={() => editColor(color)}>
             <span>
-              <span className="delete" onClick={e => {
+              <span className="button is-danger delete" onClick={e => {
                     e.stopPropagation();
                     deleteColor(color)
                   }
@@ -115,21 +115,21 @@ const ColorList = ({ colors, updateColors }) => {
           </li>
         ))}
       </ul>
+      <div className='spacer'/>
       {editing && (
-        <form onSubmit={saveEdit}>
+        <div className='form-div'>
+        <form  className='form' onSubmit={saveEdit}>
           <legend>edit color</legend>
-          <label>
-            color name:
-            <input
+          
+            <input className='input'
               onChange={e =>
                 setColorToEdit({ ...colorToEdit, color: e.target.value })
               }
               value={colorToEdit.color}
+              placeholder='Color Name'
             />
-          </label>
-          <label>
-            hex code:
-            <input
+          
+            <input className='input'
               onChange={e =>
                 setColorToEdit({
                   ...colorToEdit,
@@ -137,33 +137,41 @@ const ColorList = ({ colors, updateColors }) => {
                 })
               }
               value={colorToEdit.code.hex}
+              placeholder='Hex Code'
             />
-          </label>
+          
           <div className="button-row">
-            <button type="submit">save</button>
-            <button onClick={() => setEditing(false)}>cancel</button>
+            <button className='button is-dark' type="submit">save</button>{' '}
+            <button className='button is-dark' onClick={() => setEditing(false)}>cancel</button>
           </div>
         </form>
+        <div className="spacer" />
+        <legend>Add a new color</legend>
+        <form className='form' onSubmit={addNewColor}>
+          <input 
+           type='text'
+           name='color'
+           onChange={onChangehandler}
+           value={newColor.color}
+           placeholder='Color'
+           className='input'
+          />
+          <input 
+           type='text'
+           name='hex'
+           onChange={onChangehandler}
+           value={newColor.hex}
+           placeholder='Hex Code'
+           className='input'
+          /><br/>
+          <button 
+          type='submit'
+          className='button is-dark'>Add Color</button>{' '}
+          <button className='button is-dark' onClick={() => setEditing(false)}>cancel</button>
+        </form>
+        </div>
       )}
-      <div className="spacer" />
-      <h3>Add a new color</h3>
-      <form className='form' onSubmit={addNewColor}>
-        <input 
-         type='text'
-         name='color'
-         onChange={onChangehandler}
-         value={newColor.color}
-         placeholder='Color'
-        />
-        <input 
-         type='text'
-         name='hex'
-         onChange={onChangehandler}
-         value={newColor.hex}
-         placeholder='Hex Code'
-        /><br/>
-        <button type='input'>Add Color</button>
-      </form>
+      
     </div>
   );
 };
