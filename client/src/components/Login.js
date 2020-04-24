@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
-import NavBar from './NavBar';
+
 
 
 
@@ -34,7 +34,6 @@ const Login = () => {
   }
   return (
     <div className='login-form'>
-      <NavLinks />
       <h1>Welcome to the Bubble App!</h1>
       <h3>Login to see our bubbles</h3>
       <form className='form' onSubmit={login}>
